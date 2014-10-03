@@ -36,15 +36,14 @@ class Partida(object):
         self.ganador = None
 
     def _ganar_punto_jugador(self, jugador_1, jugador_2):
-        jugador_1.ganar_punto()
+        if jugador_1.indice_puntos == self.INDICE_DE_CUARENTA_PUNTOS and jugador_2.indice_puntos == self.INDICE_DE_VENTAJA:
+            jugador_2.indice_puntos -= 1
+        else:
+            jugador_1.ganar_punto()
 
         if jugador_1.indice_puntos > self.INDICE_DE_CUARENTA_PUNTOS and jugador_1.indice_puntos - jugador_2.indice_puntos >= self.DIFERENCIA_DE_PUNTOS_PARA_GANAR:
             self.ganador = jugador_1
             return True
-
-        if jugador_1.indice_puntos == jugador_2.indice_puntos == self.INDICE_DE_VENTAJA:
-            jugador_1.indice_puntos -= 1
-            jugador_2.indice_puntos -= 1
 
         return False
 
