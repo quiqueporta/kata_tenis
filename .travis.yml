@@ -1,6 +1,7 @@
 language: python
 python:
   - "2.7"
-script: nosetests
+script:
+  - coverage run -m test_tenis -v
 after_success:
   - coveralls
