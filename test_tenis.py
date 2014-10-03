@@ -7,20 +7,27 @@ class TestTenis(unittest.TestCase):
 
     def test_jugador_empieza_con_0_puntos(self):
         jugador_1 = Jugador()
+        self.assertEqual(jugador_1.indice_puntos, 0)
         self.assertEqual(jugador_1.puntos, 0)
 
     def test_jugador_gana_puntos(self):
         jugador = Jugador()
         self.assertTrue(hasattr(jugador, 'ganar_punto'))
 
-        jugador.ganar_punto()
+        self.assertEqual(jugador.ganar_punto(), 15)
         self.assertEqual(jugador.puntos, 15)
 
-        jugador.ganar_punto()
+        self.assertEqual(jugador.ganar_punto(), 30)
         self.assertEqual(jugador.puntos, 30)
 
-        jugador.ganar_punto()
+        self.assertEqual(jugador.ganar_punto(), 40)
         self.assertEqual(jugador.puntos, 40)
+
+        self.assertEqual(jugador.ganar_punto(), 50)
+        self.assertEqual(jugador.puntos, 50)
+
+        self.assertEqual(jugador.ganar_punto(), 60)
+        self.assertEqual(jugador.puntos, 60)
 
     def test_ganar_partida_jugador_1_40_a_0(self):
         jugador_1 = Jugador()

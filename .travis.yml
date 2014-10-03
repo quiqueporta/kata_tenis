@@ -2,6 +2,6 @@ language: python
 python:
   - "2.7"
 script:
-    - coverage run --omit='*test*' -m test_tenis -v --tb=native
+    - coverage run test_tenis.py
 after_success:
   - coveralls
