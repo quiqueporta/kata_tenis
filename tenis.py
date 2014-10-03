@@ -5,7 +5,7 @@ class Jugador(object):
 
     INCREMENTO_CUANDO_GANA = 1
 
-    puntos_partida = [0, 15, 30, 40, 50, 60]
+    puntos_partida = [0, 15, 30, 40, "ADV", "WIN"]
 
     def __init__(self, nombre='Anónimo'):
         self.indice_puntos = 0
