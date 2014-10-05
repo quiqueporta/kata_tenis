@@ -19,7 +19,7 @@ if __name__ == '__main__':
                             (jugador_1.nombre, jugador_2.nombre))
             if jugador == '1':
                 partida.ganar_punto_jugador_1()
-            if jugador == '2':
+            elif jugador == '2':
                 partida.ganar_punto_jugador_2()
 
         print(">>>")

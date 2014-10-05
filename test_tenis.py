@@ -23,11 +23,11 @@ class TestTenis(unittest.TestCase):
         self.assertEqual(jugador.ganar_punto(), '40')
         self.assertEqual(jugador.puntos, '40')
 
-        self.assertEqual(jugador.ganar_punto(), "Ventaja")
-        self.assertEqual(jugador.puntos, "Ventaja")
+        self.assertEqual(jugador.ganar_punto(), 'Ventaja')
+        self.assertEqual(jugador.puntos, 'Ventaja')
 
-        self.assertEqual(jugador.ganar_punto(), "Juego")
-        self.assertEqual(jugador.puntos, "Juego")
+        self.assertEqual(jugador.ganar_punto(), 'Juego')
+        self.assertEqual(jugador.puntos, 'Juego')
 
     def test_ganar_partida_jugador_1_40_a_0(self):
         jugador_1 = Jugador()
