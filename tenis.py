@@ -5,7 +5,7 @@ class Jugador(object):
 
     INCREMENTO_CUANDO_GANA = 1
 
-    puntos_partida = [CERO, QUINCE, TREINTA, CUATENTA, VENTAJA, JUEGO] = range(6)
+    puntos_partida = [CERO, QUINCE, TREINTA, CUATENTA, VENTAJA, JUEGO] = list(range(6))
 
     puntos_partida_texto = {
         CERO: '0',
