@@ -10,13 +10,14 @@ if __name__ == '__main__':
         fin_partida = False
 
         while not partida.ganador:
-            print("Partida: %s (%s) %s (%s)" % (jugador_1.nombre,
-                                                partida.puntuacion_jugador_1,
-                                                jugador_2.nombre,
-                                                partida.puntuacion_jugador_2))
+            print("Partida: {0} ({1}) {2} ({3})".format(jugador_1.nombre,
+                                                        partida.puntuacion_jugador_1,
+                                                        jugador_2.nombre,
+                                                        partida.puntuacion_jugador_2)
+                  )
             print(">>>")
-            jugador = input("¿Quien ganó el punto? (1) %s / (2) %s: " %
-                            (jugador_1.nombre, jugador_2.nombre))
+            jugador = input("¿Quien ganó el punto? (1) {0} / (2) {1}: ".format(
+                jugador_1.nombre, jugador_2.nombre))
             if jugador == '1':
                 partida.ganar_punto_jugador_1()
             elif jugador == '2':
@@ -24,5 +25,5 @@ if __name__ == '__main__':
 
         print(">>>")
         print(">>>")
-        print("Ha ganado %s" % partida.ganador.nombre)
+        print("Ha ganado {0}".format(partida.ganador.nombre))
         print(">>>")
