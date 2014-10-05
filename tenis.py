@@ -5,15 +5,24 @@ class Jugador(object):
 
     INCREMENTO_CUANDO_GANA = 1
 
-    puntos_partida = [0, 15, 30, 40, "ADV", "WIN"]
+    puntos_partida = [CERO, QUINCE, TREINTA, CUATENTA, VENTAJA, JUEGO] = range(6)
+
+    puntos_partida_texto = {
+        CERO: '0',
+        QUINCE: '15',
+        TREINTA: '30',
+        CUATENTA: '40',
+        VENTAJA: 'Ventaja',
+        JUEGO: 'Juego',
+    }
 
     def __init__(self, nombre='Anónimo'):
-        self.indice_puntos = 0
+        self.indice_puntos = Jugador.CERO
         self.nombre = nombre
 
     @property
     def puntos(self):
-        return self.puntos_partida[self.indice_puntos]
+        return self.puntos_partida_texto[self.indice_puntos]
 
     def ganar_punto(self):
         if self.indice_puntos in range(len(self.puntos_partida)):
@@ -27,8 +36,6 @@ class Jugador(object):
 class Partida(object):
 
     DIFERENCIA_DE_PUNTOS_PARA_GANAR = 2
-    INDICE_DE_CUARENTA_PUNTOS = 3
-    INDICE_DE_VENTAJA = 4
 
     def __init__(self, jugador_1, jugador_2):
         self.jugador_1 = jugador_1
@@ -36,16 +43,13 @@ class Partida(object):
         self.ganador = None
 
     def _ganar_punto_jugador(self, jugador_1, jugador_2):
-        if jugador_1.indice_puntos == self.INDICE_DE_CUARENTA_PUNTOS and jugador_2.indice_puntos == self.INDICE_DE_VENTAJA:
-            jugador_2.indice_puntos -= 1
+        if jugador_1.indice_puntos == Jugador.CUATENTA and jugador_2.indice_puntos == Jugador.VENTAJA:
+            jugador_2.indice_puntos = Jugador.CUATENTA
         else:
             jugador_1.ganar_punto()
 
-        if jugador_1.indice_puntos > self.INDICE_DE_CUARENTA_PUNTOS and jugador_1.indice_puntos - jugador_2.indice_puntos >= self.DIFERENCIA_DE_PUNTOS_PARA_GANAR:
+        if jugador_1.indice_puntos > Jugador.CUATENTA and jugador_1.indice_puntos - jugador_2.indice_puntos >= self.DIFERENCIA_DE_PUNTOS_PARA_GANAR:
             self.ganador = jugador_1
-            return True
-
-        return False
 
     def ganar_punto_jugador_1(self):
         return self._ganar_punto_jugador(self.jugador_1, self.jugador_2)
@@ -62,6 +66,4 @@ class Partida(object):
         return self._puntos_jugador(self.jugador_2)
 
     def _puntos_jugador(self, jugador):
-        if jugador.indice_puntos <= self.INDICE_DE_CUARENTA_PUNTOS:
-            return str(jugador.puntos)
-        return 'Ventaja'
+        return jugador.puntos
